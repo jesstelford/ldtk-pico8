@@ -1,0 +1,25 @@
+{
+  "name": "ldtk-pico8",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": "Jess Telford <hi+github@jes.st>",
+  "license": "MIT",
+  "bin": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "build": "ncc build src/index.js -o . -m --no-source-map-register",
+    "prepack": "yarn build",
+    "publish": "changeset publish && git push --follow-tags"
+  },
+  "dependencies": {
+    "@vercel/ncc": "^0.36.1",
+    "color-diff": "^1.2.0",
+    "jimp": "^0.22.4",
+    "yargs": "^17.6.2"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.1"
+  }
+}
