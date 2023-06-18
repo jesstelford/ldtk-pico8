@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 const jimp = require("jimp");
 const colorDiff = require("color-diff");
 const yargs = require("yargs/yargs");
@@ -703,11 +703,17 @@ async function main() {
     .usage("Usage: $0 <LDtk project file> [options]")
     .demandCommand(1, "Must provide an LDtk project file")
     .option("o", {
+      alias: "output",
+      type: "string",
+      describe: "Exported PICO-8 cart filename",
+    })
+    .option("s", {
       alias: "overlap-strategy",
       describe: "How to handle overlapping sprite & map data",
       choices: ["error", "sprite", "map"],
       default: "error",
     })
+    .demandOption("output")
     .help().argv;
 
   const ldtkFilePath = path.resolve(process.cwd(), argv._[0]);
@@ -789,7 +795,14 @@ function _draw()
 end`.split("\n"),
   });
 
-  console.log(cart);
+  fs.writeFileSync(path.resolve(process.cwd(), argv.output), cart);
+
+  console.log(
+    `✅ Exported ${path.relative(process.cwd(), argv._[0])} to ${path.relative(
+      process.cwd(),
+      argv.output
+    )}`
+  );
 }
 
 main()

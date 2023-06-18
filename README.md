@@ -14,7 +14,7 @@ Export an [LDtk](https://ldtk.io) project to a PICO-8 cart.
 1. Open the [`pico8-project.ldtk`](pico8-project.ldtk) project file in LDtk,
    then Tilesets > Source Image > Select your sprite sheet.
 2. Draw some tiles
-3. Run `npx ldtk-pico8 pico8-project.ldtk > output.p8`
+3. Run `npx ldtk-pico8 pico8-project.ldtk --output=output.p8`
 4. Run `output.p8` in PICO-8
 
 ## Usage
@@ -22,10 +22,11 @@ Export an [LDtk](https://ldtk.io) project to a PICO-8 cart.
 > **Warning**: Will overwrite `output.p8` if it exists.
 
 ```
-Usage: npx ldtk-pico8 <LDtk project file> [options] > output.p8
+Usage: npx ldtk-pico8 <LDtk project file> [options]
 
 Options:
-  -o, --overlap-strategy  How to handle overlapping sprite & map data
+  -o, --output            Exported PICO-8 cart filename      [string] [required]
+  -s, --overlap-strategy  How to handle overlapping sprite & map data
                           [choices: "error", "sprite", "map"] [default: "error"]
       --version           Show version number                          [boolean]
       --help              Show help                                    [boolean]
