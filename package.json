@@ -1,6 +1,6 @@
 {
   "name": "ldtk-pico8",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "index.js",
   "author": "Jess Telford <hi+github@jes.st>",
   "license": "MIT",
